@@ -1,5 +1,5 @@
-local mon = peripheral.wrap("top")
-local modem = peripheral.wrap("right")
+local mon = peripheral.find("monitor")
+local modem = peripheral.find("modem")
 local name = "simon"
 local rqst = "step"
 local arg2 = 2
