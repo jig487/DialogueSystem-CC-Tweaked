@@ -21,7 +21,6 @@ current ID. So in a tree like this:
 
 ```
 local tree = { 
-
     simon = {
         fill = {{32,""},{},{"Error: Missing button label"}},
         {"Goodbye","Bye!",0,0},        --ID pairs like this are used to end the conversation. Will generate only a goodbye button.
