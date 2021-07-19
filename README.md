@@ -19,7 +19,7 @@ sent to the terminal in a single table called 'fill'.
 ID of 1, and a target ID of 2. The system gets the target ID of whatever index corresponds to the players button choice, and fills a list with every branch with a matching 
 current ID. So in a tree like this:
 
-local tree = { 
+```local tree = { 
     simon = {
         fill = {{32,""},{},{"Error: Missing button label"}},--{Text color, response string}{target IDs}{button labels}
         {"Goodbye","Bye!",0,0}, --ID pairs like this are used to end the conversation. Will generate only a goodbye button.
@@ -29,15 +29,16 @@ local tree = {
         {"Did you polish your monitor?","Thanks for noticing.",3,0}
         }
 }
+```
 
   If the player chose the button corresponding to index 3 ("Nice weather today"), it would look for whatever the target ID of index 3 is (3) and fill the list with those pairs 
 with the current ID as the target ID. The new index list would now be {4,5} because indexs 4 and 5 have current IDs matching that of our target (3). Our terminal code would
 then display the following buttons as options for the player:
-
+```
 [1] Your floppy disk is out!       --This has a stored index value of 4
 [2] Did you polish your monitor?   --This has a stored index value of 5
 [3] Goodbye
-
+```
   Choosing 1 or 2 would then return whatever index value corresponds to that choice, and the cycle repeats until its brought to a 0,0 branch (index 1 in our example table)
 (in which case the only option the player will have is whatever the goodbye button label is set to) or until our player chooses the goodbye option.
 
