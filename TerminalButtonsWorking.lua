@@ -2,6 +2,27 @@ local name = string.gsub(string.lower(os.getComputerLabel()):gsub("%s+", ""), "%
 local choice = 2
 local modem = peripheral.wrap("left")
 modem.open(42)
+turtle.back()
+turtle.up()
+turtle.select(1)
+turtle.place()
+turtle.turnLeft()
+turtle.forward()
+turtle.turnRight()
+turtle.place()
+turtle.down()
+turtle.forward()
+turtle.turnRight()
+turtle.forward()
+turtle.turnLeft()
+local mon = peripheral.wrap("top")
+term.clear()
+mon.clear()
+mon.setTextScale(0.5)
+mon.setTextColor(1)
+term.setTextColor(1)
+mon.setCursorPos(1,1)
+term.setCursorPos(1,1)
 
 local fill = {{1,""},{},{"Error: Missing button label"}}
 
@@ -30,27 +51,15 @@ local function bPress() --Waits for mon touch event then checks if xPos and yPos
     return 0 --Unsuccessfull button press. Couldn't match touch coords with any stored button coords. Returns 0
 end
 
-turtle.back()
-turtle.up()
-turtle.select(1)
-turtle.place()
-turtle.turnLeft()
-turtle.forward()
-turtle.turnRight()
-turtle.place()
-turtle.down()
-turtle.forward()
-turtle.turnRight()
-turtle.forward()
-turtle.turnLeft()
-local mon = peripheral.wrap("top")
-term.clear()
-mon.clear()
-mon.setTextScale(0.5)
-mon.setTextColor(1)
-term.setTextColor(1)
-mon.setCursorPos(1,1)
-term.setCursorPos(1,1)
+local function say(a)
+    local a = a or fill[1][2]
+    local x,y = mon.getSize()
+    local lines = require "cc.strings".wrap(a, x)
+    for i = 1, #lines do
+      term.setCursorPos(1, i)
+      textutils.slowWrite(lines[i])
+    end
+end
 
 while true do
     fill = sendWait("step",choice)
@@ -59,16 +68,23 @@ while true do
     mon.setTextColor(fill[1][1])
     mon.clear()
     if choice == 1 then 
-        textutils.slowWrite("'"..fill[1][2].."'")
-        mon.setCursorPos(1,1)
-        modem.transmit(42, 42, name.." goodbye "..1) --This is here incase YOU want to add something when the turtles ends conversation
+        if fill[1][2] == "" then
+            say("'...'")
+        else
+            say("'"..fill[1][2].."'")
+        end
         os.sleep(2)
         break
     end
-    textutils.slowWrite("'"..fill[1][2].."'")
+    if fill[1][2] == "" then
+        say("'...'")
+    else
+        say("'"..fill[1][2].."'")
+    end
     mon.setTextColor(1)
     term.redirect(oldTerm)
-    mon.setCursorPos(1,5)
+    local x,y = mon.getCursorPos()
+    mon.setCursorPos(1,y+2)
     local oldTerm = term.redirect(mon)
     for i = 1, #fill[2] do
         local X1 , Y1 = mon.getCursorPos()
