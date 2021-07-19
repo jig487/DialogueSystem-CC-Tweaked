@@ -59,13 +59,13 @@ while true do
     mon.setTextColor(fill[1][1])
     mon.clear()
     if choice == 1 then 
-        mon.write(fill[1][2])
+        textutils.slowWrite("'"..fill[1][2].."'")
         mon.setCursorPos(1,1)
         modem.transmit(42, 42, name.." goodbye "..1) --This is here incase YOU want to add something when the turtles ends conversation
         os.sleep(2)
         break
     end
-    write(fill[1][2])
+    textutils.slowWrite("'"..fill[1][2].."'")
     mon.setTextColor(1)
     term.redirect(oldTerm)
     mon.setCursorPos(1,5)
