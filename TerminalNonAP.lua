@@ -1,3 +1,5 @@
+--This version is to be used if you do not have / want to use Advanced Peripherals
+
 local name = string.gsub(string.lower(os.getComputerLabel()):gsub("%s+", ""), "%s+", "")
 local choice = 2
 local modem = peripheral.find("modem")
