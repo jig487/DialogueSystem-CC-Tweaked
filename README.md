@@ -23,8 +23,8 @@ current ID. So in a tree like this:
 local tree = { 
 
     simon = {
-        fill = {{32,""},{},{"Error: Missing button label"}},--{Text color, response string}{target IDs}{button labels}
-        {"Goodbye","Bye!",0,0}, --ID pairs like this are used to end the conversation. Will generate only a goodbye button.
+        fill = {{32,""},{},{"Error: Missing button label"}},
+        {"Goodbye","Bye!",0,0},               --ID pairs like this are used to end the conversation. Will generate only a goodbye button.
         {"","Hello, I'm Simon.",1,2},
         {"Nice weather today!","My data indicates the weather is within acceptable parameters.",2,3},
         {"Your floppy disk is out!","I am not capable of hate. But if I was, I'd hate you.",3,1},
