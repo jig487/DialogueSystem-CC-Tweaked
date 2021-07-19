@@ -37,7 +37,7 @@ local tree = {
         {"Where were you when I was a kid?","I dream of travelling through time, consuming every wretched scrap of homework to exist on this blighted plane.",9,10},
         {"...","Then, I think about how much paper and stone and tree bark that would be, and I feel very ill.",10,7},
     },
-    buttonmaster = { --Test for pruning branches and requirement branches
+    buttonmaster = { --Test for eventual addition of pruning branches / having special case branches
         fill = {{16,""},{},{"Error: Missing button label"}},
         {"Goodbye, oh Button Master","",0,0},
         {"","Hmmm and what is it I see before me?",1,2},
