@@ -20,6 +20,7 @@ ID of 1, and a target ID of 2. The system gets the target ID of whatever index c
 current ID. So in a tree like this:
 
 `local tree = { 
+
     simon = {
         fill = {{32,""},{},{"Error: Missing button label"}},--{Text color, response string}{target IDs}{button labels}
         {"Goodbye","Bye!",0,0}, --ID pairs like this are used to end the conversation. Will generate only a goodbye button.
