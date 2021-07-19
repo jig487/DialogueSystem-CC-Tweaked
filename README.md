@@ -1,6 +1,8 @@
 # DialogueSystem-CC-Tweaked
 A system for adding dialogue to and talking with the computers in Computer Craft - Tweaked.
 
+REQUIRES: Computercraft Tweaked 1.16.5, Advanced Peripherals 1.16.5
+
   Firstly the turtles need monitors in their first slot and to be manually fueled. They won't use up fuel fast at all though (they only move like 4 blocks), so it should 
 be an extremely rare occurance for you to have to fuel them. The turtles also require a modem on the left side to work.
 
