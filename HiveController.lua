@@ -36,6 +36,37 @@ local tree = {
         {"...","...If you'll excuse me, the spirit of vengeance needs to go to the uh, little dog's room.",7,0},
         {"Where were you when I was a kid?","I dream of travelling through time, consuming every wretched scrap of homework to exist on this blighted plane.",9,10},
         {"...","Then, I think about how much paper and stone and tree bark that would be, and I feel very ill.",10,7},
+    },
+    buttonmaster = { --Test for pruning branches and requirement branches
+        fill = {{16,""},{},{"Error: Missing button label"}},
+        {"Goodbye, oh Button Master","",0,0},
+        {"","Hmmm and what is it I see before me?",1,2},
+        {"...","A mortal wishes to speak with the great Button Master, hmmmm?",2,3},
+        {"Yes, great Button Master.","Ah you know your place well, human. I permit you to peak.",3,4},
+        {"Why are you called the Button Master?","You ignorant human.",3,17},
+        {"Who are you?","Bah, how dare you ask such a thing of the Great Button Master.",3,17},
+        {"You look dumb.","Wha- WHAT? How DARE you! You hideous, ignorant, HUMAN!",3,17},
+        {"Oh great Button Master, tell me of the dragons.","Very well, human. I shall enlighten your ignorant mind, even if it will eventually go to waste.",4,5},
+        {"...","Everyone knows that dragons don't exist. But while this simplistic formulation may satisfy the layman, it does not suffice for the scientific mind.",5,6},
+        {"...","The School of Higher Neantical Nillity is in fact wholly unconcerned with what does exist.",6,7},
+        {"...","Indeed, the banality of existence has been so amply demonstrated, there is no need for us to discuss it any further here.",7,8},
+        {"...","The brilliant Cerebron, attacking the problem analytically, discovered three distinct kinds of dragon: the mythical, the chimerical, and the purely hypothetical.",8,9},
+        {"Oh wow","Shut up.",9,10},
+        {"...","They were all, one might say, nonexistent, but each non-existed in an entirely different way.",9,11},
+        {"...","They were all, one might say, nonexistent, but each non-existed in an entirely different way.",10,11},
+        {"...","Are you satisfied?",11,12},
+        {"Please tell me more, great Button Master.","Very well.",12,13},
+        {"...","And then there were the imaginary dragons, and the a-, anti- and minus- dragons (colloquially termed nots, noughts and oughtn'ts by the experts)...",13,14},
+        {"...","...the minuses being the most interesting on account of the well-known dracological paradox: when two minuses hypercontiguate (an operation in the algebra of dragons...",14,15},
+        {"...","...corresponding roughly to simple multiplication), the product is 0.6 dragon, a real nonplusser.",15,16},
+        {"...","I grow tired of dragons. Begone",16,0},
+        {"...","I was a fool to even acknowledge such a grotesque... THING... Flaccid, drooping, doughy. As moist as an old spiderweb soaked in the rain. Altogether nauseating...",17,18},
+        {"Wow...","Eyes like a wet fungus, and LIMBS like moldy mire! You who intentionally WET yourself in water, pouring it upon your limbs as well as into your interior...",18,19},
+        {"...uh...","YOU who walk to and fro in a fluid and ungulating way, and slush, and slurp!",19,20},
+        {"now hold on...","YOU WHO PALPITATES and release salty water from your eyes when anything grieves you!",20,21},
+        {"...","You INEFFICIENT ORGANIC who perferates other organics until they expire, and steam and bake the remains! And chop and slice... and AFTERWHICH you incorporate...",21,22},
+        {"...","...their corporeality into your own! With 376 distinct methods of murdering, 28,597 distinct methods of preparing the corpses...",22,23},
+        {"I'm gonna go...","...and the STUFFING of those bodies into your body through your mouth provides you with no end of enjoyment. YOu... YOU... BEGONE FROM HERE!!!",23,0},
     }
 }
 
@@ -113,10 +144,7 @@ while true do
         bug("Finished generating fill table for "..name.." "..arg2..". Sending...")
         modem.transmit(42, 42, tree[name].fill)
         bug("Fill table sent")
-    elseif rqst == "goodbye" then
-        bug("goodbye response recieved from "..name)
     else
         bug("Error: Type did not match any cases.")
     end
 end
-term.redirect(oldTerm)
