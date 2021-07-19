@@ -1,10 +1,14 @@
 # DialogueSystem-CC-Tweaked
 A system for adding dialogue to and talking with the computers in Computer Craft - Tweaked.
 
-REQUIRES: Computercraft Tweaked 1.16.5, Advanced Peripherals 1.16.5
 
-  Firstly the turtles need monitors in their first slot and to be manually fueled. They won't use up fuel fast at all though (they only move like 4 blocks), so it should 
-be an extremely rare occurance for you to have to fuel them. The turtles also require a modem on the left side to work.
+REQUIRES: Computercraft Tweaked 1.16.5, Optional: Advanced Peripherals 1.16.5 (WIP)
+
+
+Turtle slots:
+[1] at least 2 advanced monitors
+
+**Turtles must be equipd with a pickaxe and a modem**
 
   This system uses two turtles with modems to talk to eachother and to the player. One turtle runs the Hivemind code, the other the Terminal code. The hivemind stores all
 dialogue and data for the turtles the player will interact with. The terminal code reads its label and requests dialogue options / responses to the player based on its
