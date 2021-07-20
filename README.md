@@ -2,7 +2,7 @@
 A system for adding dialogue to and talking with the computers in Computer Craft - Tweaked.
 
 
-REQUIRES: Computercraft Tweaked 1.16.5, Optional: Advanced Peripherals 1.16.5 (WIP)
+REQUIRES: Computercraft Tweaked 1.16.5
 
 
 Turtle slots:
