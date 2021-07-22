@@ -48,6 +48,3 @@ anything that will work for the term.setTextColor() command, as it just jams wha
 
   Note that currently non-alphabetical (not including spaces) characters are not accepted as names. A name of 'Space Cowboy' will work fine but for the purposes of getting a fill
 table, will be reformatted to 'spacecowboy' (removed capitalization and spaces) and should be programmed into the list accordingly.
-
-  The hivemind also outputs whatever its doing to a monitor above it. This can be removed by simply removing every mention of the bug() function and anything requiring a monitor to
-run, as the hivemind itself has no use for a monitor. Though, I wouldn't reccomend doing so (for the purposes of debugging).
