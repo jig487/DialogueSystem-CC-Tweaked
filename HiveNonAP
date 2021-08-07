@@ -1,72 +1,17 @@
-local mon = peripheral.find("monitor")
 local modem = peripheral.find("modem")
-local name = "simon"
+local name = ""
 local rqst = "step"
 local arg2 = 2
-local debugCount = 0
 local next = next
 
 local tree = { 
-    simon = { -- IMPORTANT: For now, the first index must be a goodbye option. Meaning that you'll use this to end the conversation. Even if you don't use it, leave it as 0,0.
+    replaceMeWithATurtleName = { -- IMPORTANT: For now, the first index must be a goodbye option. Meaning that you'll use this to end the conversation. Even if you don't use it, leave it as 0,0.
         fill = {{32,""},{},{"Error: Missing button label"}},--{Text color, response string}{target IDs}{button labels}
         {"","",0,0},
-        {"","Hello, I'm Simon.",1,2},
-        {"Nice weather today!","My data indicates the weather is within acceptable parameters.",2,2},
-        {"Your floppy disk is out!","I am not capable of hate. But if I was, I'd hate you.",2,2},
-        {"Did you polish your monitor?","Thanks for noticing.",2,2}
-    },
-    alex = {
-        fill = {{64,""},{},{"Error: Missing button label"}},
-        {"","", 0, 0},
-        {"","Hiya there, hun!", 1, 2},
-        {"Nice weather today, huh?","Oh it's just darlin today!", 2, 3},
-        {"Are you doing anything after this?","Hmm well I've got to turn over the hay, feed the animals, clean the barnyard, water and weed my garden, get ready for baling...", 3, 4},
-        {"Never mind...","Oh, alright!", 4, 0},
-    },
-    justicedog = {
-        fill = {{16384,""},{},{"Error: Missing button label"}},
-        {"Goodbye, hero","good luck out there, kid.",0,0},
-        {"","I can't be tamed.",1,2},
-        {"Uh...","I'm an agent of vengeance. An avatar of justice. A righteous conduit of terrible purpose.",2,3},
-        {"...","I eat homework, and only God can judge me.",3,4},
-        {"Is there anything difficult about your...job? Quest?","Friend, my bowels are an eternal sea of torment. I am in agony.",4,5},
-        {"Where were you when I was a kid?","I dream of travelling through time, consuming every wretched scrap of homework to exist on this blighted plane.",4,10},
-        {"...","Pain is a rampaging bull, and I am its china shop.",5,6},
-        {"...","Still, my mission remains.",6,7},
-        {"...","...If you'll excuse me, the spirit of vengeance needs to go to the uh, little dog's room.",7,0},
-        {"Where were you when I was a kid?","I dream of travelling through time, consuming every wretched scrap of homework to exist on this blighted plane.",9,10},
-        {"...","Then, I think about how much paper and stone and tree bark that would be, and I feel very ill.",10,7},
-    },
-    buttonmaster = {
-        fill = {{16,""},{},{"Error: Missing button label"}},
-        {"Goodbye, oh Button Master","",0,0},
-        {"","Hmmm and what is it I see before me?",1,2},
-        {"...","A mortal wishes to speak with the great Button Master, hmmmm?",2,3},
-        {"Yes, great Button Master.","Ah you know your place well, human. I permit you to peak.",3,4},
-        {"Why are you called the Button Master?","You ignorant human.",3,17},
-        {"Who are you?","Bah, how dare you ask such a thing of the Great Button Master.",3,17},
-        {"You look dumb.","Wha- WHAT? How DARE you! You hideous, ignorant, HUMAN!",3,17},
-        {"Oh great Button Master, tell me of the dragons.","Very well, human. I shall enlighten your ignorant mind, even if it will eventually go to waste.",4,5},
-        {"...","Everyone knows that dragons don't exist. But while this simplistic formulation may satisfy the layman, it does not suffice for the scientific mind.",5,6},
-        {"...","The School of Higher Neantical Nillity is in fact wholly unconcerned with what does exist.",6,7},
-        {"...","Indeed, the banality of existence has been so amply demonstrated, there is no need for us to discuss it any further here.",7,8},
-        {"...","The brilliant Cerebron, attacking the problem analytically, discovered three distinct kinds of dragon: the mythical, the chimerical, and the purely hypothetical.",8,9},
-        {"Oh wow","Shut up.",9,10},
-        {"...","They were all, one might say, nonexistent, but each non-existed in an entirely different way.",9,11},
-        {"...","They were all, one might say, nonexistent, but each non-existed in an entirely different way.",10,11},
-        {"...","Are you satisfied?",11,12},
-        {"Please tell me more, great Button Master.","Very well.",12,13},
-        {"...","And then there were the imaginary dragons, and the a-, anti- and minus- dragons (colloquially termed nots, noughts and oughtn'ts by the experts)...",13,14},
-        {"...","...the minuses being the most interesting on account of the well-known dracological paradox: when two minuses hypercontiguate (an operation in the algebra of dragons...",14,15},
-        {"...","...corresponding roughly to simple multiplication), the product is 0.6 dragon, a real nonplusser.",15,16},
-        {"...","I grow tired of dragons. Begone",16,0},
-        {"...","I was a fool to even acknowledge such a grotesque... THING... Flaccid, drooping, doughy. As moist as an old spiderweb soaked in the rain. Altogether nauseating...",17,18},
-        {"Wow...","Eyes like a wet fungus, and LIMBS like moldy mire! You who intentionally WET yourself in water, pouring it upon your limbs as well as into your interior...",18,19},
-        {"...uh...","YOU who walk to and fro in a fluid and ungulating way, and slush, and slurp!",19,20},
-        {"now hold on...","YOU WHO PALPITATES and release salty water from your eyes when anything grieves you!",20,21},
-        {"...","You INEFFICIENT ORGANIC who perferates other organics until they expire, and steam and bake the remains! And chop and slice... and AFTERWHICH you incorporate...",21,22},
-        {"...","...their corporeality into your own! With 376 distinct methods of murdering, 28,597 distinct methods of preparing the corpses...",22,23},
-        {"I'm gonna go...","...and the STUFFING of those bodies into your body through your mouth provides you with no end of enjoyment! YOu... YOU... BEGONE FROM HERE!!!",23,0},
+        {"","Example greeting",1,2},
+        {"Replace me with a player option!", "Response 1. Replace me with a turtle response!", 2, 2},
+        {"Replace me with a player option!", "Replace me with a turtle response!", 2, 2},
+        {"Replace me with a player option!", "Replace me with a turtle response!", 2, 2}
     }
 }
 
@@ -78,8 +23,6 @@ local function msgWait()
 end
 
 while true do
-    term.setCursorPos(1,1)
-    mon.setCursorPos(1,1)
     local name, rqst, arg2 = msgWait()
     if rqst == "step" then
         tree[name].fill[1][2] = tree[name][arg2][2]
